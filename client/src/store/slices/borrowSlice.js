@@ -91,7 +91,7 @@ const borrowSlice = createSlice ({
 export const fetchUserBorrowedBooks = () =>async(dispatch) => {
     dispatch(borrowSlice.actions.fetchUserBorrowedBooksRequest());
 
-    await axios.get("http://localhost:4000/api/v1/borrow/my-borrowed-books", {withCredentials : true}).then((res) => {
+    await axios.get("https://library-management-1-1kwl.onrender.com/api/v1/borrow/my-borrowed-books", {withCredentials : true}).then((res) => {
         dispatch(borrowSlice.actions.fetchUserBorrowedBooksSuccess(res.data.borrowedBooks));
     }).catch((err) => {
         dispatch(borrowSlice.actions.fetchUserBorrowedBooksFailed(
@@ -103,7 +103,7 @@ export const fetchUserBorrowedBooks = () =>async(dispatch) => {
 export const fetchAllBorrowedBooks = () =>async(dispatch) => {
     dispatch(borrowSlice.actions.fetchAllBorrowedBooksRequest());
 
-    await axios.get("http://localhost:4000/api/v1/borrow/borrowed-books-by-users", {withCredentials : true}).then((res) => {
+    await axios.get("https://library-management-1-1kwl.onrender.com/api/v1/borrow/borrowed-books-by-users", {withCredentials : true}).then((res) => {
         dispatch(borrowSlice.actions.fetchAllBorrowedBooksSuccess(res.data.borrowedBooks));
     }).catch((err) => {
         dispatch(borrowSlice.actions.fetchAllBorrowedBooksFailed(
@@ -114,7 +114,7 @@ export const fetchAllBorrowedBooks = () =>async(dispatch) => {
 
 export const recordBorrowBook = (email, id) => async(dispatch) => {
     dispatch(borrowSlice.actions.recordBookRequest());
-    await axios.post(`http://localhost:4000/api/v1/borrow/record-borrow-book/${id}` , {email} , {
+    await axios.post(`https://library-management-1-1kwl.onrender.com/api/v1/borrow/record-borrow-book/${id}` , {email} , {
         withCredentials : true,
         headers : {
             "Content-Type" : "application/json",
@@ -131,7 +131,7 @@ export const recordBorrowBook = (email, id) => async(dispatch) => {
 export const returnBook = (email, id) => async(dispatch) => {
     dispatch(borrowSlice.actions.returnBookRequest());
 
-    await axios.put(`http://localhost:4000/api/v1/borrow/return-borrowed-book/${id}`, {email} , {
+    await axios.put(`https://library-management-1-1kwl.onrender.com/api/v1/borrow/return-borrowed-book/${id}`, {email} , {
         withCredentials : true,
         headers : {
             "Content-Type" : "application/json",
